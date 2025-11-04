@@ -39,12 +39,24 @@
 
     h1 {
         @apply text-5xl;
+        color: black;
     }
 
     pre,
     code {
         @apply text-3xl;
     }
+}
+
+.slidev-layout.section {
+    h1 {
+        font-weight: 900;
+    }
+}
+
+.slidev-layout strong {
+    color: #fe0000dc;
+    font-weight: 900;
 }
 
 .slidev-layout.cover {

@@ -21,47 +21,67 @@ Hiroaki Yutani
 (MIERUNE, Inc.)
 
 ---
-layout: image-right
-image: "/icon.jpg"
-backgroundSize: 70%
----
 
-# ドーモ！
+# Who Am I?
 
-## 名前:
+- Software engineer at MIERUNE, Inc.
+- Background:
+  - Server-side engineer
+  - Data scientist
 
-湯谷啓明 (@yutannihilation)
-
-## 自己紹介:
-
-- 株式会社 MIERUNE 所属
-- 好きな言語は R と忍殺語
-
----
-
-# 今日話すこと
-
-<v-clicks>
-
-- お詫び：シェーダーの話はほぼ出てきません
-  - そこまで行きつかなかった...
-- Apache Arrow・GeoArrow エコシステムについて
-- GeoJSON なしで生きていきたいけど先は長い
-
-</v-clicks>
+<div class="absolute right-30px bottom-30px">
+  <img src="/icon.jpg" class="h-[200px]" />
+</div>
 
 
 ---
 layout: section
 ---
 
-# GeoJSON、便利ですよね
+# Do you like GeoJSON?
+
+---
+
+# GeoJSON
+
+## Goods
+
+<v-clicks>
+
+- Text format
+
+</v-clicks>
+
+
+## Bads
+
+<v-clicks>
+
+- Text format
+
+</v-clicks>
+
+---
+
+# GeoJSON = text format
+
+## Goods
+
+- Supported by many tools
+  - Web browsers can parse JSON!
+- Human-readable
+
+## Bads
+
+- Parsing overhead
+- Size bloat
 
 ---
 layout: image
 image: "/figure01-01.jpg"
 ---
 
+# Typical web application
 
 ---
 layout: image
@@ -92,19 +112,66 @@ image: "/figure01-04.jpg"
 
 ---
 
-# GeoJSON の問題点
+# Many round-trips between text and binary
 
-- テキストとの変換のオーバーヘッドがある
-  - 一度テキストに変換して、そのテキストをパースする、というムダ
-- 小さいデータの場合は気にならないが、大きいデータだと問題になってくる
+- DB converts binary to text by `ST_AsGeoJSON()`
+- Application server parses it (e.g. `JSON.parse()`) to JavaScript values
+- Then, application server converts it to text
+- Web browser parses it to JavaScript values
 
 ---
 
-# Apache Arrow
+# Many round-trips between text and binary
 
-- 無駄なデータコピーを発生させないためのデータフォーマット
-  - 様々なプログラミング言語向けのライブラリや、関連ツールが用意されている
-- 保存のためのフォーマットではなく、メモリ上のデータ処理に最適化されている
+- This is fine on small data
+- However, the overhead matters on larger data
+- Can we get rid of such overhead...?
+
+---
+
+# Yes!
+
+---
+layout: image
+image: "/figure01-04.jpg"
+---
+
+# Yes!
+
+---
+layout: image
+image: "/figure01-05-1.jpg"
+---
+
+# Yes!
+
+---
+layout: section
+---
+
+# GeoArrow
+
+---
+
+# What is GeoArrow?
+
+- GeoArrow is a specification for storing geospatial data in **Apache Arrow**
+
+<div class="absolute right-30px bottom-30px">
+  <img src="https://geoarrow.org/geoarrow_logo.png" class="h-[200px]" />
+</div>
+
+---
+
+# What is Apache Arrow?
+
+- Columnar **memory format** for general purpose
+- Designed for **zero-copy reads**
+- Cross-language interoperability (C++, Rust, Java, Python, R...)
+
+<div class="absolute right-30px bottom-30px">
+  <img src="https://arrow.apache.org/img/arrow-logo_horizontal_black-txt_transparent-bg.png" class="h-[200px]" />
+</div>
 
 ---
 layout: image
@@ -116,19 +183,46 @@ layout: image
 image: "/figure02-02.jpg"
 ---
 
+---
+
+# GeoArrow & Arrow
+
+- Arrow defines **the actual memory layouts**
+- GeoArrow defines **what a geometry is represented as using Arrow**
+- GeoArrow specification is simple if you are familiar with WKB.
 
 ---
 
-# GeoArrow
+# GeoArrow specifications
 
-- Apache Arrow 形式でGISデータを扱う際の仕様
-- C、Rust、Python、R、Wasm の実装がある
+- A coordinate is either
+
+Separated representation:
+```
+Struct<
+  x: double,
+  y: double,
+ [z: double,
+ [m: double]]>
+```
+
+Interleaved representation:
+```
+[double, double, [double, [double]]]
+```
 
 ---
-layout: image
-image: "/figure01-04.jpg"
----
 
+# GeoArrow specifications
+
+- A point is  
+  `Coordinate`
+- A linestring is  
+  `[Coordinate, Coordinate, ...]`
+- A polygon is  
+  `[[Coordinate, Coordinate, ...], ...]`
+
+...
 
 ---
 layout: image
@@ -140,24 +234,52 @@ layout: image
 image: "/figure01-05-2.jpg"
 ---
 
----
-
-# 理想
-
-- データソースから GPU まで変換なしでデータを届けたい！
+# GeoArrow can reach your GPU!
 
 ---
 
-# 実例：Lonboard
-
-- GIS データを可視化する Python ライブラリ
-- Python から deck.gl に GeoArrow 形式でデータを渡すので爆速
-
-<Transform :scale="0.55">
+# e.g. Lonboard
 
 ![](/lonboard.png)
 
-</Transform>
+---
+
+# e.g. Lonboard
+
+- Use GeoArrow between Python and JavaScript (and deck.gl)
+- deck.gl accepts binary data!
+  - To be fair, the data needs to be transformed a bit, so this isn't "zero-copy"
+
+---
+
+# Text format vs binary format
+
+- Raster data
+  - GeoTIFF
+  - PNG
+  - ...
+
+→ We don't use text formats!
+
+---
+
+# Text format vs binary format
+
+- Vector tiles
+  - ~~GeoJSON tiles~~ (have you ever heard of this??)
+  - MVT
+  - PMTiles
+
+→ We don't use text formats!
+
+---
+
+# Text format vs binary format
+
+- Non-tile vector data
+  - GeoJSON
+
+→ Why???
 
 ---
 
