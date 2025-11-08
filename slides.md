@@ -321,6 +321,26 @@ layout: section
 # Challenges on the web
 
 ---
+layout: image
+image: "/figure01-01.jpg"
+---
+
+---
+layout: image
+image: "/figure03-01.jpg"
+---
+
+# 1. Lack of **DB Connectivity** from the application server
+
+---
+layout: image
+image: "/figure03-02.jpg"
+---
+
+# 2. Lack of support from **map rendering JavaScript libraries**
+
+
+---
 
 # Challenges on the web
 
@@ -351,7 +371,26 @@ To connect a database, we need either
 - Transfers data in Arrow memery format
 - Supports many languages: C/C++, C#/.NET, Go, Java, Python, R, Rust
 - Provides many drivers: DuckDB, PostgreSQL, SQLite, Bigquery, Snowflake, ...
+
+---
+layout: image
+image: "/figure04-01.jpg"
+---
+
+---
+
+# ADBC is cool!
+
+- Transfers data in Arrow memery format
+- Supports many languages: C/C++, C#/.NET, Go, Java, Python, R, Rust
+- Provides many drivers: DuckDB, PostgreSQL, SQLite, Bigquery, Snowflake, ...
+
+<v-clicks>
+
 - Easy to manage using `dbc` CLI
+
+</v-clicks>
+
 
 ---
 
@@ -370,6 +409,11 @@ To connect a database, we need either
 e.g.
 
 ![](/postgrest.webp)
+
+---
+layout: image
+image: "/figure04-02.jpg"
+---
 
 ---
 
