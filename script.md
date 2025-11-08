@@ -1,4 +1,7 @@
-Hi, I'm Hiroaki Yutani. I'm a software engineer at MIERUNE, Inc. MIERUNE is a GIS company in the Northern part of Japan.
+Hi, I'm Hiroaki Yutani. Today, I talk about GeoJSON and GeoArrow.
+
+I'm a software engineer at MIERUNE, Inc. MIERUNE is a GIS company in the Northern part of Japan.
+I occasionally contribute to various OSS including SedonaDB, DuckDB-spatial.
 
 Okay, let me start with this question. Do you like GeoJSON?
 

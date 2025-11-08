@@ -1,7 +1,6 @@
 ---
 title: GeoArrow on Web; Can We Live Without GeoJSON?
 theme: default
-# background: /background.png
 fonts:
   sans: Noto Sans JP
   mono: Fira Code
@@ -10,21 +9,24 @@ class: text-center
 drawings:
   persist: false
 mdc: true
+layout: image
+image: /title.png
 ---
 
-# <span color="blue">GeoArrow</span> on Web <br/> Can We Live Without <span color="orange">GeoJSON</span>?
+<!-- # <span color="blue">GeoArrow</span> on Web <br/> Can We Live Without <span color="orange">GeoJSON</span>?
 
 Hiroaki Yutani
-(MIERUNE, Inc.)
+(MIERUNE, Inc.) -->
 
 ---
 
 # Who Am I?
 
 - Software engineer at MIERUNE, Inc.
-- Background:
-  - Server-side engineer
-  - Data scientist
+- Occasionally contriubutes to various OSS
+  - SedonaDB
+  - DuckDB-spatial
+  - ggplot2 \(R\)
 
 <div class="absolute right-30px bottom-30px">
   <img src="/icon.jpg" class="h-[200px]" />
@@ -455,3 +457,12 @@ layout: section
 - **GeoArrow** allows us to handle large geospatial data efficiently
 - There are already great tools powered by GeoArrow such as **Lonboard** and **@geoarrow/deck.gl-layers**
 - Yet, on the web, GeoArrow is not supported well
+
+---
+
+# References
+
+- GeoArrow: https://geoarrow.org/
+- Lonboard: https://developmentseed.org/lonboard/
+- `@geoarrow/deck.gl-layer`: https://geoarrow.org/deck.gl-layers/
+- PoC: https://yutannihilation.github.io/maplibre-geoarrow-test/
