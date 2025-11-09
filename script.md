@@ -81,7 +81,7 @@ However..., as far as I know, their output is either JSON or CSV... The only exc
 
 Okay, next topic. Map-rendering libraries. There are many map-rendering JavaScript libraries. Does any of these support GeoArrow? What do you think? We already know about the status of Deck.gl. There is a great NPM package to support GeoArrow. So, in other words, GeoArrow is not supported natively. At least at the moment.
 
-So, how about other libraries? In order to investigate, I searched the word "geoarrow" on the GitHub repositories of MapLibre, MapBox, Cesium, and Leaflet. Can you guess how many issues were hit?
+So, how about other libraries? In order to investigate, I searched the word "geoarrow" on the GitHub repositories of MapLibre, Mapbox, Cesium, and Leaflet. Can you guess how many issues were hit?
 
 The answer is... zero. There were no single issue mentioning GeoArrow.
 

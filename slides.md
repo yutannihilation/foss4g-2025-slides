@@ -427,7 +427,7 @@ image: "/figure04-02.jpg"
 # Map rendering JavaScript libraries
 
 - MapLibre GL JS
-- MapBox GL JS
+- Mapbox GL JS
 - CesiumJS
 - Leaflet
 - Deck.gl
@@ -437,7 +437,7 @@ image: "/figure04-02.jpg"
 
 # Map rendering JavaScript libraries
 
-- I searched "geoarrow" on the GitHub repo of MapLibre GL JS, MapBox GL JS, CesiumJS, and Leaflet.
+- I searched "geoarrow" on the GitHub repo of MapLibre GL JS, Mapbox GL JS, CesiumJS, and Leaflet.
 - Can you guess how many issues were hit?
 
 <v-clicks>
