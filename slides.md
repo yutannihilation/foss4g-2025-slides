@@ -16,13 +16,13 @@ image: /title.png
 <!-- # <span color="blue">GeoArrow</span> on Web <br/> Can We Live Without <span color="orange">GeoJSON</span>?
 
 Hiroaki Yutani
-(MIERUNE, Inc.) -->
+(MIERUNE Inc.) -->
 
 ---
 
 # Who Am I?
 
-- Software engineer at MIERUNE, Inc.
+- Software engineer at MIERUNE Inc.
 - Occasionally contriubutes to various OSS
   - SedonaDB
   - DuckDB-spatial
