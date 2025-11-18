@@ -242,6 +242,33 @@ image: "/figure01-05-2.jpg"
 # GeoArrow can reach your GPU!
 
 ---
+layout: image
+image: "/figure01-05-2.jpg"
+---
+
+<style>
+div.slidev-page.slidev-page-27 p {
+  color: black;
+}
+
+div.slidev-page.slidev-page-27 div {
+    background-color: rgba(255,255,255,0.75);
+    background-blend-mode: lighten;
+}
+
+</style>
+
+# GeoArrow can reach your GPU!
+
+(I'm sorry to say that a recent FOSS4G workshop made me rethink this part, but let's not talk about it for now...)
+
+---
+
+# The workshop on MapLibre/Martin
+
+![](/workshop.png)
+
+---
 
 # Why does GPU matter?
 
@@ -312,7 +339,7 @@ layout: image
 image: "/figure03-00-3.jpg"
 ---
 
-# What if the output is not Deck.gl?
+# What if the output is NOT Deck.gl?
 
 ---
 layout: section
@@ -396,9 +423,7 @@ image: "/figure04-01.jpg"
 
 # But...
 
-- ADBC is not available for JavaScript / TypeScript...
-- Prisma?
-  - It only returns JSON
+- ADBC is NOT available for JavaScript / TypeScript...
 
 ---
 
@@ -486,8 +511,6 @@ image: "/figure04-02.jpg"
 
 </v-clicks>
 
-
-
 ---
 layout: section
 ---
@@ -500,7 +523,67 @@ layout: section
 
 - **GeoArrow** allows us to handle large geospatial data efficiently
 - There are already great tools powered by GeoArrow such as **Lonboard** and **@geoarrow/deck.gl-layers**
-- Yet, on the web, GeoArrow is not supported well
+- Yet, on the web, GeoArrow is not supported
+
+---
+layout: section
+---
+
+# A few more words...
+
+---
+layout: image
+image: "/figure01-05-2.jpg"
+---
+
+# This isn't really accurate because...
+
+---
+layout: image
+image: "/figure05-01.jpg"
+---
+
+# GPU cannot render polygons!
+
+---
+layout: image
+image: "/figure05-02.jpg"
+---
+
+# GPU cannot render polygons!
+
+---
+layout: image
+image: "/figure05-03.jpg"
+---
+
+# So, we need to split it to triangles (This is called **tessellation**)
+
+---
+
+# A problem with GeoArrow
+
+- GeoArrow itself doesn't take care of tessellation
+- So, the data needs to be tessallated before passing to GPU
+- **Where should tessellation happen? On backend servers? Or on web browsers?**
+
+---
+
+# MLT (MapLibre Tiles)
+
+- "Next generation vector tiles format," which supersedes MVT
+- MLT can contain **pre-tessellated** polygons!
+- If Martin generates MLT on the fly, this might be the most performant option!
+
+---
+
+# Updated summary
+
+- **GeoArrow** allows us to handle large geospatial data efficiently
+- There are already great tools powered by GeoArrow such as **Lonboard** and **@geoarrow/deck.gl-layers**
+- Yet, on the web, GeoArrow is not supported
+- **Some pre-tessellated format might be better than GeoArrow, and MLT can be the one**
+
 
 ---
 
