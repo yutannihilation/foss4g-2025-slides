@@ -98,3 +98,28 @@ I don't know. I've been thinking about it for months, while preparing this prese
 Okay, let me summarize.
 
 First, I want to emphasize that GeoArrow is so cool in that it allows us to handle large geospatial data efficiently. There are already great tools powered by GeoArrow such as Lonboard and @geoarrow/deck.gl-layers. Actually, you might be already using GeoArrow without knowing the name. But, on the web, the support for GeoArrow is surprisingly small. I hope the situation will be better in future.
+
+I planned to conclude my presentation here, but, unfortunately, I got a few words to say...
+
+Let's return to this slide. I said "GeoArrow can reach your GPU," but it's not very accurate because...
+
+GPU cannot render polygons. But it can render triangles, so we have to split the polygon into many triangles. This process is called "tessellation".
+
+Have you ever heard of tessellation? Tessellation is horrifying, as evidenced by the fact that its most famous algorithm is named...
+
+Earcut!!!
+
+No, I'm kidding, tessellation is not horrifying.
+I just wanted to say tessellation can be horrifyingly costful.
+
+Tessellation is costful, but GeoArrow itself doesn't take care of tessellation.
+So, the data needs to be tessallated before passing to GPU, anyway.
+
+Where should the tessellation happen? On backend servers? Or, on web browsers? Or somewhere else? I think this is an open but important question.
+
+Then, here comes MLT, MapLibre Tiles. I won't go into the detail, but the exciting thing about MLT is that it can contain pre-tessellated polygons! This is what we wanted! This can be directly passed to GPU.
+
+So, if it's easy to generate MLT, MLT might be the most performant option.
+
+Okay, here's the updated summary. GeoArrow is cool. And there are cool tools like Lonboard and deck.gl-lyaers. Yet, on the web, GeoArrow is not well supported.
+But, it's possible that some pre-tessellated format might be better than GeoArrow.

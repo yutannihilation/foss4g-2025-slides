@@ -395,9 +395,14 @@ To connect a database, we need either
 
 # ADBC is cool!
 
+<v-clicks>
+
 - Transfers data in Arrow memery format
 - Supports many languages: C/C++, C#/.NET, Go, Java, Python, R, Rust
 - Provides many drivers: DuckDB, PostgreSQL, SQLite, Bigquery, Snowflake, ...
+- Easy to manage using `dbc` CLI
+
+</v-clicks>
 
 ---
 layout: image
@@ -406,30 +411,22 @@ image: "/figure04-01.jpg"
 
 ---
 
-# ADBC is cool!
-
-- Transfers data in Arrow memery format
-- Supports many languages: C/C++, C#/.NET, Go, Java, Python, R, Rust
-- Provides many drivers: DuckDB, PostgreSQL, SQLite, Bigquery, Snowflake, ...
-
-<v-clicks>
-
-- Easy to manage using `dbc` CLI
-
-</v-clicks>
-
-
----
 
 # But...
 
 - ADBC is NOT available for JavaScript / TypeScript...
 
+<v-clicks>
+
+- (To be fair, we can use other languages. But, it's not handy)
+
+</v-clicks>
+
 ---
 
 # SQL Gateways
 
-- Provides REST API for executing SQLs in a database
+- Provides HTTP API for executing SQLs in a database
 
 e.g.
 
@@ -557,15 +554,48 @@ layout: image
 image: "/figure05-03.jpg"
 ---
 
-# So, we need to split it to triangles (This is called **tessellation**)
+# We need to split it into triangles (This is called **tessellation**)
+
+---
+layout: section
+---
+
+# Tessellation is horrifying, as evidenced by the fact that its most famous algorithm is named...
+
+---
+layout: image
+image: "/earcut01.jpg"
+---
+
+---
+layout: image
+image: "/earcut02.jpg"
+---
 
 ---
 
-# A problem with GeoArrow
+# Tessellation
+
+- No, I'm kidding
+- It's not horrifying
+- I just wanted to say tessellation can be horrifyingly costful!
+
+<v-clicks>
+
+- Not all geometry require tessellation
+  - Points are fine
+  - Lines...?
+
+</v-clicks>
+
+
+---
+
+# Remaining question about GeoArrow
 
 - GeoArrow itself doesn't take care of tessellation
-- So, the data needs to be tessallated before passing to GPU
-- **Where should tessellation happen? On backend servers? Or on web browsers?**
+- So, the data needs to be tessallated before passing to GPU anyway
+- **Where should tessellation happen? On backend servers? Or, on web browsers?**
 
 ---
 
@@ -573,7 +603,7 @@ image: "/figure05-03.jpg"
 
 - "Next generation vector tiles format," which supersedes MVT
 - MLT can contain **pre-tessellated** polygons!
-- If Martin generates MLT on the fly, this might be the most performant option!
+- If the tile server (Martin) generates MLT on the fly, this might be the most performant option!
 
 ---
 
