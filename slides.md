@@ -9,14 +9,14 @@ class: text-center
 drawings:
   persist: false
 mdc: true
-layout: image
-image: /title.png
+seoMeta:
+  ogImage: /title.png
 ---
 
-<!-- # <span color="blue">GeoArrow</span> on Web <br/> Can We Live Without <span color="orange">GeoJSON</span>?
+# <span color="blue">GeoArrow</span> on Web <br/> Can We Live Without <span color="orange">GeoJSON</span>?
 
 Hiroaki Yutani
-(MIERUNE Inc.) -->
+(MIERUNE Inc.)
 
 ---
 
@@ -264,12 +264,6 @@ div.slidev-page.slidev-page-27 div {
 
 ---
 
-# The workshop on MapLibre/Martin
-
-![](/workshop.png)
-
----
-
 # Why does GPU matter?
 
 - Because GPU renders maps
@@ -427,10 +421,6 @@ image: "/figure04-01.jpg"
 # SQL Gateways
 
 - Provides HTTP API for executing SQLs in a database
-
-e.g.
-
-![](/postgrest.webp)
 
 ---
 layout: image
